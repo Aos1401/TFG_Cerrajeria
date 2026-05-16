@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Básico -->
+    <title>Cerrajería Ortega | Cerrajero en Madrid</title>
+    <link rel="icon" type="image/png" href="/images/Logo.png">
+    <meta name="description" content="Cerrajería profesional en Madrid. Apertura de puertas, cambio de cerraduras e instalación de seguridad. Llámanos: 673 080 504">
+    <meta name="keywords" content="cerrajero, cerrajería, urgencias, Madrid, apertura puertas, cambio cerradura">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Cerrajería Ortega">
+    <link rel="canonical" href="http://localhost:8081/index.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cerrajería Ortega | Cerrajero en Madrid">
+    <meta property="og:description" content="Servicio de cerrajería profesional en Madrid. Rápido, fiable y sin sorpresas. Llámanos ahora.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:8081/index.html">
+    <meta property="og:locale" content="es_ES">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/chatbot.css">
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar">
+        <a href="/index.html" class="navbar-logo">
+            <img src="/images/Logo.png" alt="Cerrajería Ortega" style="height:100px;width:auto;">
+            <span class="navbar-logo-texto">
+                <span class="navbar-logo-sub">Cerrajería</span>
+                <span class="navbar-logo-nombre">Ortega</span>
+            </span>
+        </a>
+
+        <button class="navbar-hamburger" id="nav-hamburger" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul class="navbar-links" id="nav-links">
+            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="/servicios.html">Servicios</a></li>
+            <li><a href="/ubicacion.html">Dónde estamos</a></li>
+            <li><a href="/presupuesto.html">Presupuesto</a></li>
+            <li><a href="/tienda.html">Tienda</a></li>
+        </ul>
+
+        <div class="navbar-auth" id="nav-auth">
+            <div id="nav-invitado">
+                <a href="/login.html" class="btn-nav-login">Iniciar sesión</a>
+                <a href="/registro.html" class="btn-nav-registro">Registrarse</a>
+            </div>
+            <div class="navbar-usuario" id="nav-usuario">
+                <span class="navbar-email" id="nav-email"></span>
+                <a href="/admin.html" id="nav-admin" class="btn-nav-login" style="display:none">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Admin
+                </a>
+                <button class="btn-nav-logout" id="btn-logout">Cerrar sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="/images/Video_cerrajeria_inicio.mp4" type="video/mp4">
+            </video>
+            <div class="hero-contenido">
+                <p class="hero-subtitulo">Lunes a Viernes, 08:00 – 18:00</p>
+                <h1 class="hero-titulo">Cerrajería Ortega</h1>
+                <p class="hero-slogan">Soluciones rápidas y fiables cuando más lo necesitas</p>
+                <a href="tel:673080504" class="hero-telefono">
+                    <i class="fa-solid fa-phone"></i>
+                    673 080 504
+                </a>
+                <a href="mailto:ortegavigara29@gmail.com" class="hero-email">
+                    <i class="fa-solid fa-envelope"></i>
+                    ortegavigara29@gmail.com
+                </a>
+                <div class="hero-acciones">
+                    <a href="/presupuesto.html" class="btn-hero-primario">Solicitar presupuesto</a>
+                    <a href="/servicios.html" class="btn-hero-secundario">Ver servicios</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS PREVIEW -->
+        <section class="servicios-preview">
+            <div class="servicios-preview-inner">
+                <h2>¿En qué podemos ayudarte?</h2>
+                <div class="carrusel-wrapper">
+                    <button class="carrusel-btn" id="carrusel-prev" aria-label="Anterior">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="carrusel-track-container">
+                        <div class="carrusel-track" id="carrusel-track">
+                            <a class="servicio-card" href="/servicios.html#servicio-urgente">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <h3>Servicio urgente</h3>
+                            </a>
+                            <a class="servicio-card" href="/servicios.html#apertura-puertas">
+                                <i class="fa-solid fa-door-open"></i>
+                                <h3>Apertura de puertas</h3>
+                            </a>
+                            <a class="servicio-card" href="/servicios.html#extraccion-llave-rota">
+                                <i class="fa-solid fa-wrench"></i>
+                                <h3>Extracción de llave rota</h3>
+                            </a>
+                            <a class="servicio-card" href="/servicios.html#cambio-cerraduras">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                <h3>Cambio de cerraduras y bombín</h3>
+                            </a>
+                            <a class="servicio-card" href="/servicios.html#instalacion-seguridad">
+                                <i class="fa-solid fa-lock"></i>
+                                <h3>Instalación de seguridad</h3>
+                            </a>
+                            <a class="servicio-card" href="/servicios.html#rejas-vallas">
+                                <i class="fa-solid fa-border-all"></i>
+                                <h3>Rejas, vallas y ventanas</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <button class="carrusel-btn" id="carrusel-next" aria-label="Siguiente">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="carrusel-dots" id="carrusel-dots"></div>
+                <a href="/servicios.html" class="btn-ver-todos">
+                    Ver todos los servicios <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- CIFRAS DE CONFIANZA -->
+        <section class="stats-confianza">
+            <div class="stats-inner">
+                <div class="stat-item">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="stat-numero">+35</span>
+                    <span class="stat-label">Años de experiencia</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span class="stat-numero">24 h</span>
+                    <span class="stat-label">Servicio de urgencias</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span class="stat-numero">Madrid</span>
+                    <span class="stat-label">Capital y alrededores</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span class="stat-numero">0 €</span>
+                    <span class="stat-label">Sorpresas en el precio</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE NOSOTROS -->
+        <section class="sobre-nosotros">
+            <div class="sobre-inner">
+                <div class="sobre-texto">
+                    <h2>Quiénes somos</h2>
+                    <p>Cerrajería Ortega no es una franquicia ni una empresa de llamadas. Es el oficio de toda una vida. Empecé en esto con 17 años, aprendiendo de quienes mejor lo conocían, en las calles de Madrid, cerradura a cerradura.</p>
+                    <p>El negocio ha cambiado con los años, pero el compromiso es el mismo de siempre. Hoy lo llevo solo, con más de tres décadas y media a las espaldas. Cada trabajo lo hago yo, sin intermediarios, con la misma dedicación que me inculcaron desde el principio.</p>
+                    <p>Cuando llamas a Cerrajería Ortega, hablas directamente con el cerrajero. No hay centralitas ni subcontratas. Eso es lo que hace que el precio sea justo, el trabajo sea de confianza y la persona que aparece en tu puerta sea siempre la misma.</p>
+                </div>
+                <div class="sobre-puntos">
+                    <div class="punto-clave">
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <div>
+                            <strong>Respuesta rápida</strong>
+                            <p>Llegamos a tu domicilio en el menor tiempo posible. Cubrimos Madrid capital y alrededores.</p>
+                        </div>
+                    </div>
+                    <div class="punto-clave">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div>
+                            <strong>Sin daños</strong>
+                            <p>Abrimos sin forzar. La puerta y la cerradura quedan intactas siempre que sea posible.</p>
+                        </div>
+                    </div>
+                    <div class="punto-clave">
+                        <i class="fa-solid fa-euro-sign"></i>
+                        <div>
+                            <strong>Precio cerrado</strong>
+                            <p>Te damos el precio antes de empezar. Sin letra pequeña ni costes inesperados.</p>
+                        </div>
+                    </div>
+                    <div class="punto-clave">
+                        <i class="fa-solid fa-certificate"></i>
+                        <div>
+                            <strong>Garantía de calidad</strong>
+                            <p>Más de 35 años avalan cada trabajo. Usamos materiales y cerraduras de primera marca.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA PRESUPUESTO -->
+        <section class="cta-presupuesto">
+            <div class="cta-inner">
+                <h2>¿Quieres saber cuánto te va a costar?</h2>
+                <p>Cuéntanos tu problema y te respondemos en menos de 24 horas, sin compromiso ni coste.</p>
+                <a href="/presupuesto.html" class="btn-cta">Pedir presupuesto gratis</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="/images/Logo.png" alt="Cerrajería Ortega" style="height:100px;width:auto;">
+                <span>Cerrajería Ortega</span>
+            </div>
+            <div class="footer-contacto">
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:673080504">673 080 504</a></p>
+                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:ortegavigara29@gmail.com">ortegavigara29@gmail.com</a></p>
+                <p><i class="fa-solid fa-location-dot"></i> Doctor Vallejo, 32 — Madrid, 28027</p>
+                <p><i class="fa-solid fa-clock"></i> Lunes a Viernes, 08:00 – 18:00</p>
+            </div>
+            <nav class="footer-links" aria-label="Navegación del pie de página">
+                <a href="/servicios.html">Servicios</a>
+                <a href="/ubicacion.html">Dónde estamos</a>
+                <a href="/presupuesto.html">Presupuesto</a>
+                <a href="/tienda.html">Tienda</a>
+            </nav>
+        </div>
+        <p class="footer-copy">&copy; 2026 Cerrajería Ortega. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="/js/nav.js"></script>
+    <script src="/js/chatbot.js"></script>
+    <script>
+    (function () {
+        const track      = document.getElementById('carrusel-track');
+        const prevBtn    = document.getElementById('carrusel-prev');
+        const nextBtn    = document.getElementById('carrusel-next');
+        const dotsEl     = document.getElementById('carrusel-dots');
+        const GAP        = 24;
+        const slides     = Array.from(track.children);
+        const total      = slides.length;
+        let current      = 0;
+
+        function visible() {
+            return window.innerWidth > 820 ? 3 : window.innerWidth > 520 ? 2 : 1;
+        }
+
+        function maxIdx() { return total - visible(); }
+
+        function goTo(idx, animate) {
+            const max = maxIdx();
+            current = ((idx % (max + 1)) + (max + 1)) % (max + 1);
+            if (animate === false) track.style.transition = 'none';
+            track.style.transform = `translateX(-${current * (slides[0].offsetWidth + GAP)}px)`;
+            if (animate === false) { track.offsetHeight; track.style.transition = ''; }
+            renderDots();
+        }
+
+        function renderDots() {
+            dotsEl.innerHTML = '';
+            for (let i = 0; i <= maxIdx(); i++) {
+                const d = document.createElement('button');
+                d.className = 'carrusel-dot' + (i === current ? ' activo' : '');
+                d.setAttribute('aria-label', 'Ir al servicio ' + (i + 1));
+                d.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); });
+                dotsEl.appendChild(d);
+            }
+        }
+
+        prevBtn.addEventListener('click', () => goTo(current - 1));
+        nextBtn.addEventListener('click', () => goTo(current + 1));
+
+        window.addEventListener('resize', () => goTo(Math.min(current, maxIdx()), false));
+
+        goTo(0, false);
+    })();
+    </script>
+</body>
+</html>

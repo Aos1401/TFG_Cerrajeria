@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Presupuesto | Cerrajería Ortega</title>
+    <link rel="icon" type="image/png" href="/images/Logo.png">
+    <meta name="description" content="Solicita un presupuesto sin compromiso. Cuéntanos tu problema y te respondemos en menos de 24 horas.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="http://localhost:8081/presupuesto.html">
+
+    <meta property="og:title" content="Presupuesto | Cerrajería Ortega">
+    <meta property="og:description" content="Solicita presupuesto gratuito. Respuesta en menos de 24 horas.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/presupuesto.css">
+    <link rel="stylesheet" href="/css/chatbot.css">
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar">
+        <a href="/index.html" class="navbar-logo">
+            <img src="/images/Logo.png" alt="Cerrajería Ortega" style="height:100px;width:auto;">
+            <span class="navbar-logo-texto">
+                <span class="navbar-logo-sub">Cerrajería</span>
+                <span class="navbar-logo-nombre">Ortega</span>
+            </span>
+        </a>
+
+        <button class="navbar-hamburger" id="nav-hamburger" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul class="navbar-links" id="nav-links">
+            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="/servicios.html">Servicios</a></li>
+            <li><a href="/ubicacion.html">Dónde estamos</a></li>
+            <li><a href="/presupuesto.html">Presupuesto</a></li>
+            <li><a href="/tienda.html">Tienda</a></li>
+        </ul>
+
+        <div class="navbar-auth" id="nav-auth">
+            <div id="nav-invitado">
+                <a href="/login.html" class="btn-nav-login">Iniciar sesión</a>
+                <a href="/registro.html" class="btn-nav-registro">Registrarse</a>
+            </div>
+            <div class="navbar-usuario" id="nav-usuario">
+                <span class="navbar-email" id="nav-email"></span>
+                <a href="/admin.html" id="nav-admin" class="btn-nav-login" style="display:none">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Admin
+                </a>
+                <button class="btn-nav-logout" id="btn-logout">Cerrar sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CABECERA -->
+    <header class="page-header">
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+            <a href="/index.html">Inicio</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Presupuesto</span>
+        </nav>
+        <h1>Solicitar presupuesto</h1>
+        <p>Sin compromiso ni coste. Cuéntanos qué necesitas y te respondemos en menos de 24 horas.</p>
+    </header>
+
+    <main>
+        <section class="presupuesto-section">
+
+            <!-- PANEL INFORMATIVO -->
+            <div class="info-panel">
+                <div>
+                    <h2>¿Cómo funciona?</h2>
+                    <p>Rellena el formulario con tu problema y te enviamos un presupuesto personalizado sin coste.</p>
+                </div>
+
+                <div class="pasos">
+                    <div class="paso">
+                        <div class="paso-numero">1</div>
+                        <div class="paso-texto">
+                            <strong>Describe tu problema</strong>
+                            <span>Cuéntanos qué ha pasado y dónde se encuentra la cerradura o puerta.</span>
+                        </div>
+                    </div>
+                    <div class="paso">
+                        <div class="paso-numero">2</div>
+                        <div class="paso-texto">
+                            <strong>Recibe el presupuesto</strong>
+                            <span>En menos de 24 horas te enviamos un presupuesto detallado por email.</span>
+                        </div>
+                    </div>
+                    <div class="paso">
+                        <div class="paso-numero">3</div>
+                        <div class="paso-texto">
+                            <strong>Confirmamos la visita</strong>
+                            <span>Si el presupuesto te convence, acordamos día y hora para el servicio.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-aviso">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>Para enviar una solicitud de presupuesto necesitas iniciar sesión. El registro es gratuito y solo tarda un momento.</span>
+                </div>
+            </div>
+
+            <!-- FORMULARIO / AVISO -->
+            <div>
+
+                <!-- Aviso si no hay sesión -->
+                <div class="aviso-login" id="aviso-login" style="display:none;">
+                    <i class="fa-solid fa-user-lock"></i>
+                    <h3>Inicia sesión para continuar</h3>
+                    <p>Necesitas una cuenta para enviar solicitudes de presupuesto y hacer seguimiento de tus pedidos.</p>
+                    <div class="aviso-login-acciones">
+                        <a href="/login.html" class="btn-ir-login">Iniciar sesión</a>
+                        <a href="/registro.html" class="btn-ir-registro">Crear cuenta gratis</a>
+                    </div>
+                </div>
+
+                <!-- Formulario si hay sesión -->
+                <div class="form-card" id="form-card" style="display:none;">
+                    <h2>Datos de la solicitud</h2>
+                    <form id="form-presupuesto">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre <span class="requerido">*</span></label>
+                                <input type="text" id="nombre" placeholder="Tu nombre completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono <span class="requerido">*</span></label>
+                                <input type="tel" id="telefono" placeholder="600 000 000" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email de contacto <span class="requerido">*</span></label>
+                            <input type="email" id="email" placeholder="tu@email.com" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="direccionServicio">Dirección del servicio <span class="requerido">*</span></label>
+                            <input type="text" id="direccionServicio" placeholder="Calle, número, piso, ciudad" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tipoServicio">Tipo de servicio <span class="requerido">*</span></label>
+                            <select id="tipoServicio" required>
+                                <option value="">-- Selecciona un servicio --</option>
+                                <option value="Apertura de puerta">Apertura de puerta</option>
+                                <option value="Cambio de cerradura">Cambio de cerradura</option>
+                                <option value="Duplicado de llaves">Duplicado de llaves</option>
+                                <option value="Apertura de vehículo">Apertura de vehículo</option>
+                                <option value="Apertura de caja fuerte">Apertura de caja fuerte</option>
+                                <option value="Instalación de seguridad">Instalación de seguridad</option>
+                                <option value="Urgencia 24h">Urgencia 24h</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descripcion">Descripción del problema <span class="requerido">*</span></label>
+                            <textarea id="descripcion" placeholder="Describe con detalle qué ha pasado: tipo de puerta, marca de cerradura, situación actual..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Foto del problema <span class="opcional">(opcional)</span></label>
+                            <div class="foto-zona" id="foto-zona">
+                                <input type="file" id="foto" accept="image/*" style="display:none;">
+                                <div class="foto-placeholder" id="foto-placeholder">
+                                    <i class="fa-solid fa-camera"></i>
+                                    <span>Haz clic para adjuntar una foto</span>
+                                    <small>JPG, PNG o WEBP · Máx. 5 MB</small>
+                                </div>
+                                <div class="foto-preview-wrap" id="foto-preview-wrap" style="display:none;">
+                                    <img id="foto-preview" alt="Vista previa">
+                                    <button type="button" id="btn-quitar-foto" class="btn-quitar-foto">
+                                        <i class="fa-solid fa-xmark"></i> Quitar foto
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="mensaje" class="mensaje oculto"></div>
+
+                        <button type="submit" id="btn-submit" class="btn-submit">
+                            Enviar solicitud
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </section>
+        <!-- MIS SOLICITUDES -->
+        <section class="mis-solicitudes-section" id="mis-solicitudes-section" style="display:none;">
+            <div class="mis-solicitudes-inner">
+                <h2><i class="fa-solid fa-clock-rotate-left"></i> Mis solicitudes anteriores</h2>
+                <div id="mis-solicitudes-lista"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="/images/Logo.png" alt="Cerrajería Ortega" style="height:100px;width:auto;">
+                <span>Cerrajería Ortega</span>
+            </div>
+            <div class="footer-contacto">
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:673080504">673 080 504</a></p>
+                <p><i class="fa-solid fa-location-dot"></i> Doctor Vallejo, 32 — Madrid, 28027</p>
+                <p><i class="fa-solid fa-clock"></i> Lunes a Viernes, 08:00 – 18:00</p>
+            </div>
+            <nav class="footer-links" aria-label="Navegación del pie de página">
+                <a href="/servicios.html">Servicios</a>
+                <a href="/ubicacion.html">Dónde estamos</a>
+                <a href="/presupuesto.html">Presupuesto</a>
+                <a href="/tienda.html">Tienda</a>
+            </nav>
+        </div>
+        <p class="footer-copy">&copy; 2026 Cerrajería Ortega. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="/js/nav.js"></script>
+    <script src="/js/presupuesto.js"></script>
+    <script src="/js/chatbot.js"></script>
+</body>
+</html>

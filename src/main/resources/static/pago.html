@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso de pago | Cerrajería Ortega</title>
+    <link rel="icon" type="image/png" href="/images/Logo.png">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/pago.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="pago-header">
+        <div class="pago-header-logo">
+            <img src="/images/Logo.png" alt="Cerrajería Ortega" style="height:100px;width:auto;">
+            <span>Cerrajería Ortega</span>
+        </div>
+        <a href="/tienda.html" class="pago-header-back">
+            <i class="fa-solid fa-arrow-left"></i> Volver a la tienda
+        </a>
+    </header>
+
+    <!-- PASOS -->
+    <div class="pago-steps">
+        <div class="step completado">
+            <div class="step-num"><i class="fa-solid fa-check"></i></div>
+            <span>Carrito</span>
+        </div>
+        <span class="step-sep">›</span>
+        <div class="step activo">
+            <div class="step-num">2</div>
+            <span>Pago</span>
+        </div>
+        <span class="step-sep">›</span>
+        <div class="step">
+            <div class="step-num">3</div>
+            <span>Confirmación</span>
+        </div>
+    </div>
+
+    <div class="pago-layout">
+
+        <!-- MÉTODOS DE PAGO -->
+        <div>
+            <div class="pago-card">
+                <h2><i class="fa-solid fa-credit-card"></i> Elige tu método de pago</h2>
+
+                <div class="metodos-grid">
+
+                    <label class="metodo-label" data-metodo="paypal">
+                        <input type="radio" name="metodo" value="paypal">
+                        <div class="metodo-icono paypal"><i class="fa-brands fa-paypal"></i></div>
+                        <div class="metodo-info">
+                            <strong>PayPal</strong>
+                            <span>Paga con tu cuenta PayPal de forma segura</span>
+                        </div>
+                        <i class="fa-solid fa-circle-check metodo-check"></i>
+                    </label>
+
+                    <label class="metodo-label" data-metodo="transferencia">
+                        <input type="radio" name="metodo" value="transferencia">
+                        <div class="metodo-icono transferencia"><i class="fa-solid fa-building-columns"></i></div>
+                        <div class="metodo-info">
+                            <strong>Transferencia bancaria</strong>
+                            <span>Tu pedido se reserva durante 48h</span>
+                        </div>
+                        <i class="fa-solid fa-circle-check metodo-check"></i>
+                    </label>
+
+                </div>
+
+                <!-- FORMULARIO PAYPAL -->
+                <div class="pago-form-seccion" id="form-paypal">
+                    <div class="info-box">
+                        Serás redirigido a PayPal para completar el pago de forma segura. No almacenamos tus datos de PayPal.
+                    </div>
+                    <button class="btn-paypal" type="button">
+                        <i class="fa-brands fa-paypal"></i> Conectar con PayPal
+                    </button>
+                </div>
+
+                <!-- TRANSFERENCIA -->
+                <div class="pago-form-seccion" id="form-transferencia">
+                    <div class="info-box">
+                        <strong>Datos para la transferencia:</strong><br>
+                        Titular: Cerrajería Ortega S.L.<br>
+                        IBAN: ES76 0049 1234 5678 9012 3456<br>
+                        Concepto: Tu número de pedido (se mostrará al confirmar)<br><br>
+                        Tu pedido quedará reservado durante <strong>48 horas</strong>.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- RESUMEN DEL PEDIDO -->
+        <div>
+            <div class="pago-card">
+                <h2><i class="fa-solid fa-receipt"></i> Resumen del pedido</h2>
+                <div class="resumen-items" id="resumen-items">
+                    <div style="color:#6b7280;font-size:.9rem">Cargando...</div>
+                </div>
+                <div class="resumen-totales">
+                    <div class="resumen-linea">
+                        <span>Subtotal</span>
+                        <span id="resumen-subtotal">—</span>
+                    </div>
+                    <div class="resumen-linea">
+                        <span>Envío</span>
+                        <span id="resumen-envio">—</span>
+                    </div>
+                    <div class="resumen-total">
+                        <span>Total</span>
+                        <span id="resumen-total">—</span>
+                    </div>
+                </div>
+
+                <button class="btn-pagar" id="btn-pagar" disabled>
+                    <i class="fa-solid fa-lock"></i>
+                    <span id="btn-total-texto">Selecciona un método de pago</span>
+                </button>
+
+                <div class="seguridad-badges">
+                    <div class="badge-seg"><i class="fa-solid fa-lock"></i> Pago seguro SSL</div>
+                    <div class="badge-seg"><i class="fa-solid fa-shield-halved"></i> Datos protegidos</div>
+                    <div class="badge-seg"><i class="fa-solid fa-rotate-left"></i> Devolución garantizada</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/js/pago.js"></script>
+</body>
+</html>
