@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de administración | Cerrajería Ortega</title>
+    <link rel="icon" type="image/png" href="/images/Logo.png">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="admin-header">
+        <div class="admin-header-logo">
+            <img src="/images/Logo.png" alt="Cerrajería Ortega" style="height:44px;width:auto;">
+            <span>Cerrajería Ortega — Admin</span>
+        </div>
+        <div class="admin-header-actions">
+            <span id="admin-email-display"></span>
+            <a href="/index.html"><i class="fa-solid fa-arrow-left"></i> Volver a la web</a>
+            <button class="btn-logout-admin" id="btn-logout-admin">
+                <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+            </button>
+        </div>
+    </header>
+
+    <div class="admin-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+            <p class="sidebar-section">Gestión</p>
+            <button class="sidebar-link activo" data-section="sec-presupuestos">
+                <i class="fa-solid fa-file-invoice"></i> Presupuestos
+            </button>
+            <button class="sidebar-link" data-section="sec-productos">
+                <i class="fa-solid fa-boxes-stacked"></i> Productos
+            </button>
+        </aside>
+
+        <!-- CONTENIDO -->
+        <main class="admin-content">
+
+            <!-- ══ PRESUPUESTOS ══ -->
+            <section id="sec-presupuestos" class="admin-section visible">
+                <h1 class="admin-page-title">
+                    <i class="fa-solid fa-file-invoice"></i> Presupuestos solicitados
+                </h1>
+
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-num" id="stat-total-presup">—</div>
+                        <div class="stat-label">Total solicitudes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num" id="stat-pendientes">—</div>
+                        <div class="stat-label">Pendientes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num" id="stat-en-revision">—</div>
+                        <div class="stat-label">En revisión</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num" id="stat-respondidos">—</div>
+                        <div class="stat-label">Respondidos</div>
+                    </div>
+                </div>
+
+                <div class="tabla-wrap">
+                    <div class="tabla-header">
+                        <h3>Todas las solicitudes</h3>
+                        <div class="buscador-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" id="buscador-presupuestos"
+                                   placeholder="Buscar por nombre, email o servicio…">
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Tipo servicio</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-presupuestos"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ══ PRODUCTOS ══ -->
+            <section id="sec-productos" class="admin-section">
+                <h1 class="admin-page-title">
+                    <i class="fa-solid fa-boxes-stacked"></i> Gestión de productos
+                </h1>
+
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-num" id="stat-total-prod">—</div>
+                        <div class="stat-label">Total productos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num" id="stat-activos">—</div>
+                        <div class="stat-label">Activos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num" id="stat-sin-stock">—</div>
+                        <div class="stat-label">Sin stock</div>
+                    </div>
+                </div>
+
+                <div class="tabla-wrap">
+                    <div class="tabla-header">
+                        <h3>Catálogo</h3>
+                        <button class="btn-primary" id="btn-nuevo-producto">
+                            <i class="fa-solid fa-plus"></i> Nuevo producto
+                        </button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-productos"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL PRESUPUESTO -->
+    <div class="modal-overlay" id="modal-presupuesto">
+        <div class="modal">
+            <h2><i class="fa-solid fa-file-invoice" style="color:#c9a84c"></i> Detalle del presupuesto</h2>
+            <div class="presup-detalle" id="presup-detalle"></div>
+            <form id="form-presupuesto">
+                <input type="hidden" id="modal-presup-id">
+                <div class="form-group">
+                    <label>Estado</label>
+                    <select id="presup-estado">
+                        <option value="PENDIENTE">Pendiente</option>
+                        <option value="EN_REVISION">En revisión</option>
+                        <option value="RESPONDIDO">Respondido</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Respuesta al cliente</label>
+                    <textarea id="presup-respuesta" placeholder="Escribe aquí tu respuesta..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary btn-cerrar-modal" data-modal="modal-presupuesto">Cancelar</button>
+                    <button type="submit" class="btn-primary"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL PRODUCTO -->
+    <div class="modal-overlay" id="modal-producto">
+        <div class="modal">
+            <h2 id="modal-prod-titulo"><i class="fa-solid fa-box" style="color:#c9a84c"></i> Producto</h2>
+            <form id="form-producto">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="prod-nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea id="prod-descripcion"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Precio (€)</label>
+                        <input type="number" id="prod-precio" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Stock</label>
+                        <input type="number" id="prod-stock" min="0" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <input type="text" id="prod-categoria">
+                    </div>
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="prod-activo">
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Imagen <span style="color:#9ca3af;font-weight:400">(opcional · JPG, PNG, WEBP · máx 5 MB)</span></label>
+                    <div class="img-upload-zona" id="img-upload-zona">
+                        <img id="prod-imagen-preview" src="" alt="" style="display:none;">
+                        <div id="img-upload-placeholder">
+                            <i class="fa-solid fa-image"></i>
+                            <span>Haz clic para seleccionar imagen</span>
+                        </div>
+                        <input type="file" id="prod-imagen-input" accept="image/*" style="display:none">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary btn-cerrar-modal" data-modal="modal-producto">Cancelar</button>
+                    <button type="submit" class="btn-primary"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

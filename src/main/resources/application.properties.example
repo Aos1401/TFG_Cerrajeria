@@ -1,0 +1,40 @@
+# ==============================================================
+# CONFIGURACION DEL SERVIDOR
+# ==============================================================
+server.port=8081
+
+# ==============================================================
+# CONFIGURACION DE LA BASE DE DATOS (XAMPP - MySQL)
+# ==============================================================
+spring.datasource.url=jdbc:mysql://localhost:3306/cerrajeria_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=TU_PASSWORD_MYSQL
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# ==============================================================
+# CONFIGURACION DE JPA / HIBERNATE
+# ==============================================================
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+
+# ==============================================================
+# SEGURIDAD Y JWT
+# ==============================================================
+jwt.secret=TU_CLAVE_SECRETA_JWT_MUY_LARGA
+jwt.expiration=86400000
+
+# ==============================================================
+# CHATBOT — API KEY DE GROQ
+# ==============================================================
+# Obtén tu clave en: https://console.groq.com/keys
+groq.api.key=TU_GROQ_API_KEY
+app.admin.email=TU_EMAIL_ADMIN
+
+# ==============================================================
+# SUBIDA DE ARCHIVOS
+# ==============================================================
+app.upload.dir=uploads
+spring.servlet.multipart.max-file-size=5MB
+spring.servlet.multipart.max-request-size=10MB

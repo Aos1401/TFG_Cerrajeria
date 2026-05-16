@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dónde estamos | Cerrajería Ortega</title>
+    <link rel="icon" type="image/png" href="/images/Logo.png">
+    <meta name="description" content="Encuentra Cerrajería Ortega en Calle Gran Vía 28, Madrid. Consulta nuestro horario, teléfono y cómo llegar en metro, autobús o a pie.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="http://localhost:8081/ubicacion.html">
+
+    <meta property="og:title" content="Dónde estamos | Cerrajería Ortega">
+    <meta property="og:description" content="Calle Gran Vía 28, Madrid. Abiertos de lunes a viernes, 08:00 – 18:00.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:8081/ubicacion.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/ubicacion.css">
+    <link rel="stylesheet" href="/css/chatbot.css">
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar">
+        <a href="/index.html" class="navbar-logo">
+            <img src="/images/Logo.png" alt="Cerrajería Ortega" style="height:100px;width:auto;">
+            <span class="navbar-logo-texto">
+                <span class="navbar-logo-sub">Cerrajería</span>
+                <span class="navbar-logo-nombre">Ortega</span>
+            </span>
+        </a>
+
+        <button class="navbar-hamburger" id="nav-hamburger" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul class="navbar-links" id="nav-links">
+            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="/servicios.html">Servicios</a></li>
+            <li><a href="/ubicacion.html">Dónde estamos</a></li>
+            <li><a href="/presupuesto.html">Presupuesto</a></li>
+            <li><a href="/tienda.html">Tienda</a></li>
+        </ul>
+
+        <div class="navbar-auth" id="nav-auth">
+            <div id="nav-invitado">
+                <a href="/login.html" class="btn-nav-login">Iniciar sesión</a>
+                <a href="/registro.html" class="btn-nav-registro">Registrarse</a>
+            </div>
+            <div class="navbar-usuario" id="nav-usuario">
+                <span class="navbar-email" id="nav-email"></span>
+                <a href="/admin.html" id="nav-admin" class="btn-nav-login" style="display:none">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Admin
+                </a>
+                <button class="btn-nav-logout" id="btn-logout">Cerrar sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CABECERA -->
+    <header class="page-header">
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+            <a href="/index.html">Inicio</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Dónde estamos</span>
+        </nav>
+        <h1>Dónde estamos</h1>
+        <p>Encuéntranos en el centro de Madrid. También nos desplazamos a domicilio en toda la comunidad.</p>
+    </header>
+
+    <main>
+        <section class="ubicacion-section">
+
+            <!-- INFO -->
+            <div class="info-panel">
+
+                <div class="info-bloque">
+                    <h2>Contacto</h2>
+                    <div class="info-item">
+                        <div class="info-item-icono"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-item-texto">
+                            <strong>Dirección</strong>
+                            <span>Doctor Vallejo, 32</span>
+                            <span>28027 Madrid</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-icono"><i class="fa-solid fa-phone"></i></div>
+                        <div class="info-item-texto">
+                            <strong>Teléfono</strong>
+                            <a href="tel:673080504">673 080 504</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-icono"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="info-item-texto">
+                            <strong>Email</strong>
+                            <a href="mailto:ortegavigara29@gmail.com">ortegavigara29@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-bloque">
+                    <h2>Horario</h2>
+                    <table class="horario-tabla">
+                        <tbody>
+                            <tr>
+                                <td>Lunes — Viernes</td>
+                                <td>08:00 — 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Sábado — Domingo</td>
+                                <td>Cerrado</td>
+                            </tr>
+                            <tr>
+                                <td>Festivos</td>
+                                <td>Cerrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+            <!-- MAPA -->
+            <div class="mapa-panel">
+                <div class="mapa-contenedor">
+                    <iframe
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=-3.6520%2C40.4360%2C-3.6390%2C40.4420&layer=mapnik&marker=40.4390%2C-3.6456"
+                        allowfullscreen
+                        loading="lazy"
+                        title="Localización de Cerrajería Ortega en Doctor Vallejo 32, Madrid">
+                    </iframe>
+                </div>
+                <p class="mapa-nota">
+                    <a href="https://www.openstreetmap.org/?mlat=40.4390&mlon=-3.6456#map=17/40.4390/-3.6456" target="_blank" rel="noopener">
+                        Ver mapa más grande <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </p>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="/images/Logo.png" alt="Cerrajería Ortega" style="height:100px;width:auto;">
+                <span>Cerrajería Ortega</span>
+            </div>
+            <div class="footer-contacto">
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:673080504">673 080 504</a></p>
+                <p><i class="fa-solid fa-location-dot"></i> Doctor Vallejo, 32 — Madrid, 28027</p>
+                <p><i class="fa-solid fa-clock"></i> Lunes a Viernes, 08:00 – 18:00</p>
+            </div>
+            <nav class="footer-links" aria-label="Navegación del pie de página">
+                <a href="/servicios.html">Servicios</a>
+                <a href="/ubicacion.html">Dónde estamos</a>
+                <a href="/presupuesto.html">Presupuesto</a>
+                <a href="/tienda.html">Tienda</a>
+            </nav>
+        </div>
+        <p class="footer-copy">&copy; 2026 Cerrajería Ortega. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="/js/nav.js"></script>
+    <script src="/js/chatbot.js"></script>
+</body>
+</html>

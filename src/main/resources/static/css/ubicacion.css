@@ -1,0 +1,376 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1f2937;
+    background: #f8f9fb;
+    padding-top: 120px;
+}
+h1, h2, h3, h4 { font-family: 'Lora', Georgia, serif; }
+
+/* =============================================
+   CABECERA DE PÁGINA
+   ============================================= */
+
+.page-header {
+    background: linear-gradient(rgba(10,20,40,0.58), rgba(10,20,40,0.58)),
+                url('/images/Donde_estamos_fondo.jpg') center/cover no-repeat;
+    padding: 56px 32px 48px;
+    text-align: center;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 16px;
+}
+
+.breadcrumb a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #c9a84c;
+}
+
+.breadcrumb i {
+    font-size: 10px;
+}
+
+.breadcrumb span {
+    color: #c9a84c;
+}
+
+.page-header h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.page-header p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* =============================================
+   SECCIÓN PRINCIPAL (mapa + info)
+   ============================================= */
+
+.ubicacion-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 48px;
+    align-items: start;
+}
+
+/* ---- Panel de información ---- */
+
+.info-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.info-bloque h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a2e4a;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #c9a84c;
+    display: inline-block;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item-icono {
+    width: 40px;
+    height: 40px;
+    background: rgba(201, 168, 76, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.info-item-icono i {
+    font-size: 17px;
+    color: #c9a84c;
+}
+
+.info-item-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.info-item-texto strong {
+    font-size: 13px;
+    font-weight: 700;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-item-texto span,
+.info-item-texto a {
+    font-size: 15px;
+    color: #1f2937;
+    text-decoration: none;
+    line-height: 1.5;
+    transition: color 0.2s;
+}
+
+.info-item-texto a:hover {
+    color: #c9a84c;
+}
+
+/* ---- Horario ---- */
+
+.horario-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.horario-tabla tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.horario-tabla tr:last-child {
+    border-bottom: none;
+}
+
+.horario-tabla td {
+    padding: 9px 4px;
+    color: #374151;
+}
+
+.horario-tabla td:first-child {
+    font-weight: 600;
+    color: #1a2e4a;
+    width: 55%;
+}
+
+.horario-tabla td:last-child {
+    text-align: right;
+    color: #6b7280;
+}
+
+.horario-urgencia {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    background: rgba(239, 68, 68, 0.07);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.horario-urgencia i {
+    font-size: 15px;
+}
+
+/* ---- Cómo llegar ---- */
+
+.transporte-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.transporte-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #374151;
+}
+
+.transporte-item i {
+    width: 20px;
+    text-align: center;
+    color: #c9a84c;
+    font-size: 16px;
+}
+
+/* ---- Panel del mapa ---- */
+
+.mapa-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mapa-contenedor {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    height: 440px;
+}
+
+.mapa-contenedor iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.mapa-nota {
+    font-size: 12px;
+    color: #9ca3af;
+    text-align: center;
+}
+
+.mapa-nota a {
+    color: #c9a84c;
+    text-decoration: none;
+}
+
+.mapa-nota a:hover {
+    text-decoration: underline;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+
+.footer {
+    background: #0f172a;
+    padding: 48px 32px 24px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 24px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-logo i {
+    color: #c9a84c;
+    font-size: 20px;
+}
+
+.footer-logo span {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.footer-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.footer-contacto p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-contacto i {
+    color: #c9a84c;
+    width: 16px;
+}
+
+.footer-contacto a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-contacto a:hover {
+    color: #c9a84c;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #c9a84c;
+}
+
+.footer-copy {
+    max-width: 1080px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 860px) {
+    .ubicacion-section {
+        grid-template-columns: 1fr;
+    }
+
+    .mapa-contenedor {
+        height: 320px;
+    }
+}
+
+@media (max-width: 560px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+}
