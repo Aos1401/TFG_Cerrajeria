@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const inputTel  = document.getElementById('telefono');
     const selectPre = document.getElementById('telefono-prefijo');
 
+    // Prerellenar con datos del perfil
+    cargarPerfil(token);
+
     function esEspana() { return selectPre.value === '+34'; }
 
     inputTel.addEventListener('input', function () {
@@ -200,6 +203,46 @@ async function cargarMisSolicitudes(token) {
                 </div>` : ''}
             </div>`;
         }).join('');
+    } catch (err) {
+        // sin conexión, ignorar
+    }
+}
+
+async function cargarPerfil(token) {
+    try {
+        const res = await fetch('/api/usuarios/perfil', {
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (!res.ok) return;
+        const perfil = await res.json();
+
+        const inputNombre = document.getElementById('nombre');
+        if (inputNombre && perfil.nombre) {
+            inputNombre.value = perfil.nombre + (perfil.apellidos ? ' ' + perfil.apellidos : '');
+        }
+
+        if (perfil.telefono) {
+            const PREFIJOS = ['+598', '+595', '+593', '+351', '+34', '+44', '+33', '+49', '+39', '+52', '+54', '+57', '+56', '+51', '+58', '+1'];
+            let prefijo = '+34', digitos = perfil.telefono;
+            for (const p of PREFIJOS) {
+                if (perfil.telefono.startsWith(p)) {
+                    prefijo  = p;
+                    digitos  = perfil.telefono.slice(p.length).replace(/\s/g, '');
+                    break;
+                }
+            }
+            const selectPre = document.getElementById('telefono-prefijo');
+            const inputTel  = document.getElementById('telefono');
+            if (selectPre) selectPre.value = prefijo;
+            if (inputTel)  inputTel.dispatchEvent(new Event('input'));
+            if (inputTel && digitos) {
+                if (prefijo === '+34' && digitos.length === 9) {
+                    inputTel.value = digitos.slice(0,3) + ' ' + digitos.slice(3,6) + ' ' + digitos.slice(6);
+                } else {
+                    inputTel.value = digitos;
+                }
+            }
+        }
     } catch (err) {
         // sin conexión, ignorar
     }
