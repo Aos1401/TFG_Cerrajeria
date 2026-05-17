@@ -6,7 +6,7 @@ const authHeaders = { 'Authorization': 'Bearer ' + token, 'Content-Type': 'appli
 let carritoItems = [];
 let metodoPago   = null;
 
-// ── CARGAR CARRITO ────────────────────────────────────────────────────
+// CARGAR CARRITO────
 async function cargarResumen() {
     const res = await fetch('/api/carrito', { headers: authHeaders });
     if (!res.ok) return;
@@ -36,7 +36,7 @@ async function cargarResumen() {
     document.getElementById('btn-total-texto').textContent  = 'Pagar ' + (subtotal + envio).toFixed(2) + ' €';
 }
 
-// ── SELECCIÓN DE MÉTODO ───────────────────────────────────────────────
+// SELECCIÓN DE MÉTODO
 document.querySelectorAll('.metodo-label').forEach(label => {
     label.addEventListener('click', () => {
         document.querySelectorAll('.metodo-label').forEach(l => l.classList.remove('seleccionado'));
@@ -52,7 +52,7 @@ document.querySelectorAll('.metodo-label').forEach(label => {
     });
 });
 
-// ── SIMULAR PAGO ──────────────────────────────────────────────────────
+// SIMULAR PAGO
 document.getElementById('btn-pagar').addEventListener('click', async () => {
     if (!metodoPago) return;
 

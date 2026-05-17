@@ -7,12 +7,6 @@
     <title>Presupuesto | Cerrajería Ortega</title>
     <link rel="icon" type="image/png" href="/images/Logo.png">
     <meta name="description" content="Solicita un presupuesto sin compromiso. Cuéntanos tu problema y te respondemos en menos de 24 horas.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="http://localhost:8081/presupuesto.html">
-
-    <meta property="og:title" content="Presupuesto | Cerrajería Ortega">
-    <meta property="og:description" content="Solicita presupuesto gratuito. Respuesta en menos de 24 horas.">
-    <meta property="og:type" content="website">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +18,7 @@
 </head>
 <body>
 
-    <!-- NAVEGACIÓN -->
+    <!-- Navegacion -->
     <nav class="navbar">
         <a href="/index.html" class="navbar-logo">
             <img src="/images/Logo.png" alt="Cerrajería Ortega" style="height:100px;width:auto;">
@@ -61,7 +55,7 @@
         </div>
     </nav>
 
-    <!-- CABECERA -->
+    <!-- Cabecera -->
     <header class="page-header">
         <nav class="breadcrumb" aria-label="Ruta de navegación">
             <a href="/index.html">Inicio</a>
@@ -75,7 +69,7 @@
     <main>
         <section class="presupuesto-section">
 
-            <!-- PANEL INFORMATIVO -->
+            <!-- Panel informativo -->
             <div class="info-panel">
                 <div>
                     <h2>¿Cómo funciona?</h2>
@@ -112,10 +106,10 @@
                 </div>
             </div>
 
-            <!-- FORMULARIO / AVISO -->
+            <!-- Formulario o aviso -->
             <div>
 
-                <!-- Aviso si no hay sesión -->
+                <!-- Aviso sin sesion -->
                 <div class="aviso-login" id="aviso-login" style="display:none;">
                     <i class="fa-solid fa-user-lock"></i>
                     <h3>Inicia sesión para continuar</h3>
@@ -126,7 +120,7 @@
                     </div>
                 </div>
 
-                <!-- Formulario si hay sesión -->
+                <!-- Formulario con sesion -->
                 <div class="form-card" id="form-card" style="display:none;">
                     <h2>Datos de la solicitud</h2>
                     <form id="form-presupuesto">
@@ -138,7 +132,27 @@
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Teléfono <span class="requerido">*</span></label>
-                                <input type="tel" id="telefono" placeholder="600 000 000" required>
+                                <div class="tel-group">
+                                    <select id="telefono-prefijo" class="prefijo-select">
+                                        <option value="+34">ES +34</option>
+                                        <option value="+1">US +1</option>
+                                        <option value="+44">GB +44</option>
+                                        <option value="+33">FR +33</option>
+                                        <option value="+49">DE +49</option>
+                                        <option value="+39">IT +39</option>
+                                        <option value="+351">PT +351</option>
+                                        <option value="+52">MX +52</option>
+                                        <option value="+54">AR +54</option>
+                                        <option value="+57">CO +57</option>
+                                        <option value="+56">CL +56</option>
+                                        <option value="+51">PE +51</option>
+                                        <option value="+58">VE +58</option>
+                                        <option value="+598">UY +598</option>
+                                        <option value="+595">PY +595</option>
+                                        <option value="+593">EC +593</option>
+                                    </select>
+                                    <input type="tel" id="telefono" placeholder="600 000 000" maxlength="11" autocomplete="tel" required>
+                                </div>
                             </div>
                         </div>
 
@@ -202,7 +216,7 @@
             </div>
 
         </section>
-        <!-- MIS SOLICITUDES -->
+        <!-- Mis solicitudes -->
         <section class="mis-solicitudes-section" id="mis-solicitudes-section" style="display:none;">
             <div class="mis-solicitudes-inner">
                 <h2><i class="fa-solid fa-clock-rotate-left"></i> Mis solicitudes anteriores</h2>
@@ -211,7 +225,7 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-logo">

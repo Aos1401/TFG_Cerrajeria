@@ -70,6 +70,11 @@ label {
 .requerido {
     color: #c9a84c;
 }
+.opcional {
+    font-weight: 400;
+    color: #9ca3af;
+    font-size: 12px;
+}
 input {
     width: 100%;
     padding: 11px 14px;

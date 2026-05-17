@@ -1,5 +1,5 @@
 (function () {
-    // ---- Inyectar HTML del widget en el body ----
+    // Inyectar HTML del widget
     const widget = document.createElement('div');
     widget.innerHTML = `
         <button class="chatbot-btn" id="chatbot-btn" aria-label="Abrir chat de ayuda">
@@ -33,7 +33,7 @@
     `;
     document.body.appendChild(widget);
 
-    // ---- Referencias ----
+    // Referencias
     const btn        = document.getElementById('chatbot-btn');
     const ventana    = document.getElementById('chatbot-ventana');
     const cerrar     = document.getElementById('chatbot-cerrar');
@@ -44,10 +44,10 @@
     let abierto = false;
     let esperando = false;
 
-    // ---- Mensaje inicial ----
+    // Mensaje inicial
     agregarMensajeBot('¡Hola! Soy el asistente de Cerrajería Ortega. ¿En qué puedo ayudarte hoy?');
 
-    // ---- Eventos ----
+    // Eventos
     btn.addEventListener('click', toggleVentana);
     cerrar.addEventListener('click', toggleVentana);
 
@@ -59,7 +59,7 @@
         }
     });
 
-    // ---- Funciones ----
+    // Funciones
 
     function toggleVentana() {
         abierto = !abierto;

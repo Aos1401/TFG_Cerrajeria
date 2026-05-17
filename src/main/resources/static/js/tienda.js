@@ -1,6 +1,6 @@
 const token = localStorage.getItem('token');
 
-// ---- Estado en memoria ----
+// Estado en memoria
 let carritoItems = [];
 let productosData = [];
 
@@ -14,9 +14,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     document.getElementById('carrito-overlay').addEventListener('click', cerrarCarrito);
 });
 
-// =============================================
 // PRODUCTOS
-// =============================================
 
 async function cargarProductos() {
     const grid = document.getElementById('productos-grid');
@@ -105,9 +103,7 @@ function renderProducto(p) {
     </div>`;
 }
 
-// =============================================
 // CARRITO
-// =============================================
 
 async function cargarCarrito() {
     try {
@@ -117,7 +113,9 @@ async function cargarCarrito() {
         if (response.ok) {
             carritoItems = await response.json();
         }
-    } catch (err) { /* sin conexión, carrito vacío */ }
+    } catch (err) {
+        // sin conexión, carrito vacío
+    }
 }
 
 async function agregarAlCarrito(productoId, btn) {
@@ -191,7 +189,9 @@ async function sumarCantidad(productoId) {
             const msg = await response.text();
             Swal.fire({ icon: 'warning', title: 'Stock máximo alcanzado', text: msg || 'No se pudo añadir más unidades.', confirmButtonColor: '#c9a84c' });
         }
-    } catch (err) { /* error silencioso */ }
+    } catch (err) {
+        // error silencioso
+    }
 }
 
 async function restarCantidad(itemId, productoId) {
@@ -213,7 +213,9 @@ async function restarCantidad(itemId, productoId) {
                 }
             }
         }
-    } catch (err) { /* error silencioso */ }
+    } catch (err) {
+        // error silencioso
+    }
 }
 
 async function eliminarItem(itemId) {
@@ -235,7 +237,9 @@ async function eliminarItem(itemId) {
                 }
             }
         }
-    } catch (err) { /* error silencioso */ }
+    } catch (err) {
+        // error silencioso
+    }
 }
 
 function actualizarBadge() {
