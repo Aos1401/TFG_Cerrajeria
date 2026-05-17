@@ -3,6 +3,8 @@ package com.TFG.cerrajeria.presupuesto.application;
 import com.TFG.cerrajeria.presupuesto.domain.EstadoPresupuesto;
 import com.TFG.cerrajeria.presupuesto.domain.Presupuesto;
 import com.TFG.cerrajeria.presupuesto.infrastructure.PresupuestoRepository;
+import com.TFG.cerrajeria.registro.domain.Usuario;
+import com.TFG.cerrajeria.registro.infrastructure.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -24,12 +26,17 @@ public class CrearPresupuestoUseCase {
     private String uploadDir;
 
     private final PresupuestoRepository presupuestoRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public CrearPresupuestoUseCase(PresupuestoRepository presupuestoRepository) {
+    public CrearPresupuestoUseCase(PresupuestoRepository presupuestoRepository,
+                                   UsuarioRepository usuarioRepository) {
         this.presupuestoRepository = presupuestoRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
     public Presupuesto ejecutar(Presupuesto presupuesto, String emailUsuario, MultipartFile foto) {
+        Usuario usuario = usuarioRepository.findByEmail(emailUsuario).orElseThrow();
+        presupuesto.setUsuario(usuario);
         presupuesto.setEmail(emailUsuario);
         presupuesto.setEstado(EstadoPresupuesto.PENDIENTE);
         presupuesto.setFechaSolicitud(LocalDateTime.now());
