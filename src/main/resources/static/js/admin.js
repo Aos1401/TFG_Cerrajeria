@@ -10,7 +10,7 @@ const headers = () => ({
     'Authorization': 'Bearer ' + token
 });
 
-// ── NAVEGACIÓN SIDEBAR ────────────────────────────────────────────────
+// NAVEGACIÓN SIDEBAR
 document.querySelectorAll('.sidebar-link[data-section]').forEach(link => {
     link.addEventListener('click', () => {
         document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('activo'));
@@ -20,15 +20,13 @@ document.querySelectorAll('.sidebar-link[data-section]').forEach(link => {
     });
 });
 
-// ── LOGOUT ────────────────────────────────────────────────────────────
+// LOGOUT
 document.getElementById('btn-logout-admin').addEventListener('click', () => {
     localStorage.clear();
     window.location.href = '/index.html';
 });
 
-// ══════════════════════════════════════════════════════════════════════
 // PRESUPUESTOS
-// ══════════════════════════════════════════════════════════════════════
 let presupuestos = [];
 
 async function cargarPresupuestos() {
@@ -155,9 +153,7 @@ document.getElementById('form-presupuesto').addEventListener('submit', async e =
     }
 });
 
-// ══════════════════════════════════════════════════════════════════════
 // PRODUCTOS
-// ══════════════════════════════════════════════════════════════════════
 let productos = [];
 let editandoProductoId = null;
 
@@ -347,7 +343,7 @@ async function eliminarProducto(id, nombre) {
     }
 }
 
-// ── UTILIDADES ────────────────────────────────────────────────────────
+// UTILIDADES
 function cerrarModal(id) { document.getElementById(id).classList.remove('visible'); }
 
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
@@ -372,7 +368,7 @@ function formatFecha(iso) {
         + ' ' + d.toLocaleTimeString('es-ES', { hour:'2-digit', minute:'2-digit' });
 }
 
-// ── INIT ──────────────────────────────────────────────────────────────
+// INIT
 document.getElementById('admin-email-display').textContent = localStorage.getItem('email') || '';
 cargarPresupuestos();
 cargarProductos();

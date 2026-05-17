@@ -301,6 +301,46 @@ textarea {
     cursor: not-allowed;
     transform: none;
 }
+.tel-group {
+    display: flex;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f9fafb;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.tel-group:focus-within {
+    border-color: #1a2e4a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(26, 46, 74, 0.08);
+}
+.prefijo-select {
+    border: none;
+    border-right: 1.5px solid #d1d5db;
+    background: transparent;
+    padding: 11px 6px 11px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1f2937;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    flex-shrink: 0;
+    appearance: auto;
+    width: auto;
+}
+.tel-group input {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    flex: 1;
+    min-width: 0;
+}
+.tel-group input:focus {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
 .opcional {
     font-weight: 400;
     color: #9ca3af;

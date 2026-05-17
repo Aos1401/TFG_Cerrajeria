@@ -1,4 +1,4 @@
-// ── FORMATO TELÉFONO ─────────────────────────────────────────────────
+// FORMATO TELÉFONO
 const inputTel  = document.getElementById('telefono');
 const selectPre = document.getElementById('telefono-prefijo');
 
@@ -27,7 +27,7 @@ selectPre.addEventListener('change', function () {
     inputTel.maxLength   = esEspana() ? 11 : 16;
 });
 
-// ── REGISTRO ─────────────────────────────────────────────────────────
+// REGISTRO
 document.getElementById('form-registro').addEventListener('submit', async function (e) {
     e.preventDefault();
 

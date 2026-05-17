@@ -1,4 +1,4 @@
-// ── ÍNDICE DE BÚSQUEDA ESTÁTICO ──────────────────────────────────────
+// ÍNDICE DE BÚSQUEDA
 const INDICE = [
     // Páginas
     { titulo: 'Inicio',          subtitulo: 'Página principal',                url: '/index.html',       icono: 'fa-house',             tipo: 'Página',    keywords: ['home','principal'] },
@@ -161,7 +161,7 @@ function inyectarBuscador() {
     });
 }
 
-// ── INICIALIZACIÓN ────────────────────────────────────────────────────
+// INICIALIZACIÓN
 document.addEventListener('DOMContentLoaded', function () {
     const token = localStorage.getItem('token');
     const email = localStorage.getItem('email');

@@ -19,7 +19,36 @@ document.addEventListener('DOMContentLoaded', function () {
     const inputEmail = document.getElementById('email');
     if (inputEmail && email) inputEmail.value = email;
 
-    // ---- Zona de foto ----
+    // Teléfono
+    const inputTel  = document.getElementById('telefono');
+    const selectPre = document.getElementById('telefono-prefijo');
+
+    function esEspana() { return selectPre.value === '+34'; }
+
+    inputTel.addEventListener('input', function () {
+        let digits = this.value.replace(/\D/g, '');
+        if (esEspana()) {
+            digits = digits.slice(0, 9);
+            if (digits.length > 6)      this.value = digits.slice(0,3) + ' ' + digits.slice(3,6) + ' ' + digits.slice(6);
+            else if (digits.length > 3) this.value = digits.slice(0,3) + ' ' + digits.slice(3);
+            else                        this.value = digits;
+        } else {
+            this.value = digits.slice(0, 15);
+        }
+    });
+
+    inputTel.addEventListener('keydown', function (e) {
+        const allowed = ['Backspace','Delete','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Tab','Home','End'];
+        if (!allowed.includes(e.key) && !/^\d$/.test(e.key)) e.preventDefault();
+    });
+
+    selectPre.addEventListener('change', function () {
+        inputTel.value = '';
+        inputTel.placeholder = esEspana() ? '600 000 000' : '000 000 000';
+        inputTel.maxLength   = esEspana() ? 11 : 16;
+    });
+
+    // Zona de foto
     const fotoZona       = document.getElementById('foto-zona');
     const fotoInput      = document.getElementById('foto');
     const fotoPlaceholder = document.getElementById('foto-placeholder');
@@ -51,15 +80,25 @@ document.addEventListener('DOMContentLoaded', function () {
         fotoPlaceholder.style.display = 'flex';
     });
 
-    // ---- Envío del formulario ----
+    // Envío del formulario
     document.getElementById('form-presupuesto').addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const nombre            = document.getElementById('nombre').value.trim();
-        const telefono          = document.getElementById('telefono').value.trim();
+        const telefonoDigits    = document.getElementById('telefono').value.replace(/\s/g, '');
+        const prefijo           = document.getElementById('telefono-prefijo').value;
         const direccionServicio = document.getElementById('direccionServicio').value.trim();
         const tipoServicio      = document.getElementById('tipoServicio').value;
         const descripcion       = document.getElementById('descripcion').value.trim();
+
+        if (prefijo === '+34' && !/^[6789]\d{8}$/.test(telefonoDigits)) {
+            mostrarMensaje('El teléfono español debe tener 9 dígitos y empezar por 6, 7, 8 o 9.', 'error');
+            return;
+        }
+        if (prefijo !== '+34' && telefonoDigits.length < 6) {
+            mostrarMensaje('El número de teléfono no parece válido.', 'error');
+            return;
+        }
 
         if (!tipoServicio) {
             mostrarMensaje('Selecciona el tipo de servicio.', 'error');
@@ -72,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const formData = new FormData();
         formData.append('nombre', nombre);
-        formData.append('telefono', telefono);
+        formData.append('telefono', prefijo + telefonoDigits);
         formData.append('direccionServicio', direccionServicio);
         formData.append('tipoServicio', tipoServicio);
         formData.append('descripcion', descripcion);
@@ -161,7 +200,9 @@ async function cargarMisSolicitudes(token) {
                 </div>` : ''}
             </div>`;
         }).join('');
-    } catch (err) { /* sin conexión, ignorar */ }
+    } catch (err) {
+        // sin conexión, ignorar
+    }
 }
 
 function escHtml(str) {
