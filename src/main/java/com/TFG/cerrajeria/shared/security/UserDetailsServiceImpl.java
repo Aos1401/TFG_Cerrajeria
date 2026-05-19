@@ -11,12 +11,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Value("${app.admin.email}")
-    private String adminEmail;
+    @Value("${app.admin.emails}")
+    private List<String> adminEmails;
 
     private final UsuarioRepository usuarioRepository;
 
@@ -29,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         Usuario usuario = usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + email));
 
-        String rol = email.equalsIgnoreCase(adminEmail) ? "ROLE_ADMIN" : usuario.getRol();
+        String rol = adminEmails.stream().anyMatch(a -> a.equalsIgnoreCase(email)) ? "ROLE_ADMIN" : usuario.getRol();
 
         return new User(
                 usuario.getEmail(),
