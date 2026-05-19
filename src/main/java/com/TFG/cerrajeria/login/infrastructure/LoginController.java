@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/login")
 public class LoginController {
 
-    @Value("${app.admin.email}")
-    private String adminEmail;
+    @Value("${app.admin.emails}")
+    private List<String> adminEmails;
 
     private final LoginUseCase loginUseCase;
 
@@ -28,7 +30,7 @@ public class LoginController {
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         try {
             String token = loginUseCase.ejecutar(loginRequest.getEmail(), loginRequest.getPassword());
-            String rol = loginRequest.getEmail().equalsIgnoreCase(adminEmail) ? "ROLE_ADMIN" : "ROLE_USER";
+            String rol = adminEmails.stream().anyMatch(a -> a.equalsIgnoreCase(loginRequest.getEmail())) ? "ROLE_ADMIN" : "ROLE_USER";
             return ResponseEntity.ok(new LoginResponse(token, loginRequest.getEmail(), rol));
         } catch (Exception e) {
             return new ResponseEntity<>("Credenciales incorrectas", HttpStatus.UNAUTHORIZED);

@@ -21,7 +21,7 @@ Aplicación web para una cerrajería. Desarrollada como Trabajo de Fin de Grado 
 ## Configuración
 
 1. Copia `src/main/resources/application.properties.example` como `application.properties`
-2. Rellena las credenciales de base de datos, el secreto JWT y tu clave de Groq
+2. Rellena las credenciales de base de datos, el secreto JWT y tu clave de Groq (obtenla gratis en https://console.groq.com/keys)
 3. Arranca MySQL y ejecuta la aplicación con `./mvnw spring-boot:run`
 
 El servidor arranca en `http://localhost:8081`
