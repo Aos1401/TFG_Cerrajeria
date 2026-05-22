@@ -70,7 +70,8 @@ function iconoCategoria(categoria) {
 
 function renderProducto(p) {
     const estaEnCarrito = carritoItems.some(i => i.productoId === p.id);
-    const sinStock = p.stock === 0;
+    const sinStock      = p.stock === 0;
+    const pocasUnidades = p.stock > 0 && p.stock <= 5;
     const btnClase = sinStock ? 'agotado' : (!token ? 'login-requerido' : '');
     const btnTexto = sinStock
         ? '<i class="fa-solid fa-ban"></i> Agotado'
@@ -95,7 +96,7 @@ function renderProducto(p) {
         </div>
         <div class="producto-footer">
             <div class="producto-precio">${parseFloat(p.precio).toFixed(2)} <span>€</span></div>
-            <span class="producto-stock ${sinStock ? 'sin-stock' : ''}">${sinStock ? 'Sin stock' : 'En stock'}</span>
+            <span class="producto-stock ${sinStock ? 'sin-stock' : pocasUnidades ? 'pocas-unidades' : ''}">${sinStock ? 'Sin stock' : pocasUnidades ? `¡Solo quedan ${p.stock}!` : 'En stock'}</span>
         </div>
         <button class="btn-agregar ${btnClase}" data-id="${p.id}" ${sinStock ? 'disabled' : ''}>
             ${btnTexto}
