@@ -218,6 +218,10 @@ h1, h2, h3, h4 {
 .producto-stock.sin-stock {
     color: #dc2626;
 }
+.producto-stock.pocas-unidades {
+    color: #d97706;
+    font-weight: 700;
+}
 .btn-agregar {
     width: 100%;
     margin: 0 16px 16px;
