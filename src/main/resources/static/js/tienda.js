@@ -242,6 +242,11 @@ async function eliminarItem(itemId) {
     }
 }
 
+function carritoImgError(img) {
+    img.parentElement.className = 'carrito-item-icono';
+    img.outerHTML = '<i class="fa-solid fa-key"></i>';
+}
+
 function actualizarBadge() {
     const badge = document.getElementById('carrito-badge');
     const total = carritoItems.length;
@@ -291,9 +296,18 @@ function renderCarrito() {
 
     const total = carritoItems.reduce((acc, i) => acc + parseFloat(i.subtotal), 0);
 
-    contenedor.innerHTML = carritoItems.map(item => `
+    contenedor.innerHTML = carritoItems.map(item => {
+        const producto = productosData.find(p => p.id === item.productoId);
+        const imagenSrc = producto?.imagenNombre
+            ? `/uploads/${producto.imagenNombre}`
+            : (producto ? `/images/${producto.nombre.replace(/ /g, '_')}.jpg` : null);
+        const miniatura = imagenSrc
+            ? `<img src="${imagenSrc}" alt="${item.nombreProducto}" class="carrito-item-img" onerror="carritoImgError(this)">`
+            : `<i class="fa-solid fa-key"></i>`;
+        const iconoClase = imagenSrc ? 'carrito-item-icono con-imagen' : 'carrito-item-icono';
+        return `
         <div class="carrito-item">
-            <div class="carrito-item-icono"><i class="fa-solid fa-key"></i></div>
+            <div class="${iconoClase}">${miniatura}</div>
             <div class="carrito-item-info">
                 <div class="carrito-item-nombre">${item.nombreProducto}</div>
                 <div class="carrito-item-precio">${parseFloat(item.precioUnitario).toFixed(2)} € / ud</div>
@@ -307,7 +321,8 @@ function renderCarrito() {
             <button class="btn-eliminar-item" onclick="eliminarItem(${item.itemId})" title="Eliminar">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-        </div>`).join('');
+        </div>`;
+    }).join('');
 
     totalEl.textContent = total.toFixed(2).replace('.', ',') + ' €';
     btnComprar.disabled = false;
