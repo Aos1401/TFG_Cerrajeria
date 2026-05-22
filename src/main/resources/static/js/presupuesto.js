@@ -170,6 +170,12 @@ async function cargarMisSolicitudes(token) {
         const res = await fetch('/api/presupuestos/mis-presupuestos', {
             headers: { 'Authorization': 'Bearer ' + token }
         });
+        if (res.status === 401 || res.status === 403) {
+            mostrarMensaje('Tu sesión ha expirado. Vuelve a iniciar sesión.', 'error');
+            localStorage.clear();
+            setTimeout(() => window.location.href = '/login.html', 2000);
+            return;
+        }
         if (!res.ok) return;
         const solicitudes = await res.json();
 
